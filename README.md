@@ -1,16 +1,62 @@
-# React + Vite
+# Prashant Dwivedi — Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Premium, cinematic portfolio built with React, Vite, TypeScript, Tailwind CSS, Framer Motion, and Lenis smooth scroll.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **Vite 8** + **TypeScript**
+- **Tailwind CSS v4** (`@tailwindcss/vite`)
+- **Framer Motion** — animations & transitions
+- **Lenis** — smooth scrolling
+- **Lucide React** — UI icons
 
-## React Compiler
+## Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+├── components/     # Reusable UI, effects, layout
+├── sections/       # Hero, About, Skills, Projects, etc.
+├── hooks/          # scroll, mouse, counter, in-view
+├── constants/      # Site data, projects, experience
+├── utils/          # cn(), scroll helpers
+└── assets/
+```
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173/portfolio/](http://localhost:5173/portfolio/) (base path is `/portfolio/` for GitHub Pages).
+
+## Build & Deploy
+
+```bash
+npm run build
+npm run deploy   # publishes dist/ to gh-pages
+```
+
+## Customize
+
+Edit `src/constants/data.ts` for:
+
+- Contact email, GitHub, LinkedIn URLs
+- Projects, experience, skills
+- Stats and timeline content
+
+Add your resume at `public/resume.pdf` for the **Download Resume** button.
+
+## Features
+
+- Cinematic hero with rotating titles & floating tech badges
+- Timeline about section with animated stat counters
+- Interactive skills orbit + category grid
+- Featured projects with case-study modals
+- Experience timeline with scroll reveals
+- System design section with animated architecture flows
+- Contact form with social links
+- Cursor glow, scroll progress, loading screen, particle grid
+- Lazy-loaded sections for performance
+- Fully responsive layout
