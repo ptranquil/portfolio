@@ -13,7 +13,7 @@ export function Skills() {
   const orbitSkills = Object.values(SKILL_CATEGORIES).flat()
 
   return (
-    <section id="skills" className="section-padding relative overflow-hidden">
+    <section id="skills" className="section-padding relative overflow-hidden pt-10 md:pt-14">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
           label="Skills"

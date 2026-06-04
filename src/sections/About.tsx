@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion'
-import { Building2, Cloud, Network, Workflow } from 'lucide-react'
-import { ABOUT_HIGHLIGHTS, ABOUT_PILLARS, STATS } from '@/constants/data'
+import { Building2, Cloud, Network, Sparkles } from 'lucide-react'
+import { ABOUT_PILLARS, STATS } from '@/constants/data'
+import { AiEngineeringCard } from '@/components/about/AiEngineeringCard'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { useInView } from '@/hooks/useInView'
 import { useCounter } from '@/hooks/useCounter'
 
-const pillarIcons = [Building2, Cloud, Network, Workflow]
+const pillarIcons = [Building2, Cloud, Network, Sparkles]
 
 function StatCard({
   label,
@@ -38,12 +39,12 @@ export function About() {
   const { ref, inView } = useInView()
 
   return (
-    <section id="about" className="section-padding relative" ref={ref}>
+    <section id="about" className="section-padding relative pb-10 md:pb-14" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <SectionHeading
           label="About"
           title="Enterprise-grade engineering"
-          subtitle="Full stack and backend engineer delivering scalable cloud-native systems, modular architectures, and production reliability across enterprise client ecosystems."
+          subtitle="Full stack and backend engineer delivering scalable cloud-native systems, modular architectures, and AI-assisted workflows with Cursor and Claude — always engineer-reviewed before production."
         />
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
@@ -83,26 +84,7 @@ export function About() {
           </div>
         </div>
 
-        <div className="mt-20 relative">
-          <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-linear-to-b from-accent/50 via-white/10 to-transparent" />
-          <div className="space-y-8">
-            {ABOUT_HIGHLIGHTS.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ delay: i * 0.1 }}
-                className="relative pl-12 md:pl-16"
-              >
-                <div className="absolute left-2 md:left-6 top-2 w-3 h-3 rounded-full bg-accent glow-accent" />
-                <span className="font-mono text-xs text-cyan">{item.year}</span>
-                <h3 className="text-lg font-medium mt-1 mb-2">{item.title}</h3>
-                <p className="text-muted text-sm max-w-2xl leading-relaxed">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        <AiEngineeringCard />
       </div>
     </section>
   )

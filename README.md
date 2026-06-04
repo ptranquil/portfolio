@@ -46,7 +46,18 @@ Edit `src/constants/data.ts` for:
 - Projects, experience, skills
 - Stats and timeline content
 
-Add your resume at `public/resume.pdf` for the **Download Resume** button.
+## Resume
+
+- **Source:** `public/resume.html` (ATS-friendly, one-page layout)
+- **PDF:** `public/resume.pdf` (used by the portfolio Download Resume button)
+
+Regenerate PDF after editing the HTML:
+
+```bash
+npm run resume:pdf
+```
+
+Or open `public/resume.html` in a browser → **Print** → **Save as PDF** (margins: none/default).
 
 ## Features
 

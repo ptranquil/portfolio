@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { EXPERIENCE } from '@/constants/data'
+import { AI_ENGINEERING, EXPERIENCE } from '@/constants/data'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { cn } from '@/utils/cn'
 
@@ -45,6 +45,24 @@ export function Experience() {
                   </li>
                 ))}
               </ul>
+
+              <div className="mt-8 glass rounded-xl p-5 border border-violet-500/20">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-accent-glow mb-2">
+                  {AI_ENGINEERING.title} · {AI_ENGINEERING.tools.join(' + ')}
+                </p>
+                <p className="text-sm text-muted leading-relaxed mb-3">
+                  On the enterprise platform: development, pre-PR review, testing, documentation,
+                  and debugging — with measurable gains in delivery speed and review quality.
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-2">
+                  {AI_ENGINEERING.outcomes.slice(0, 4).map((o) => (
+                    <li key={o} className="text-xs text-muted/90 flex gap-2">
+                      <span className="text-cyan shrink-0">→</span>
+                      {o}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               {'techStack' in featured && featured.techStack && (
                 <div className="mt-8 pt-6 border-t border-white/5">

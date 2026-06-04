@@ -44,7 +44,7 @@ export const HERO_TECH_ICONS = [
 ] as const
 
 export const STATS = [
-  { label: 'Years in Production', value: 4, suffix: '+' },
+  { label: 'Years in Production', value: 5, suffix: '+' },
   { label: 'Enterprise Engagements', value: 3, suffix: '' },
   { label: 'Cloud Platforms', value: 2, suffix: '' },
   { label: 'Stack Domains', value: 4, suffix: '' },
@@ -64,37 +64,53 @@ export const ABOUT_PILLARS = [
     desc: 'REST & GraphQL services designed for scalability, security, and cross-team integration.',
   },
   {
-    label: 'Event-Driven Scale',
-    desc: 'Queue workflows, data synchronization, and performance-tuned distributed processing.',
+    label: 'AI-Assisted Engineering',
+    desc: 'Cursor + Claude for development, review, testing, and docs — engineer-owned quality gates.',
   },
 ] as const
 
-export const ABOUT_HIGHLIGHTS = [
-  {
-    year: 'Jul 2025 — Present',
-    title: 'Rigved Infotech · Enterprise Platforms',
-    description:
-      'Software Engineer building scalable enterprise applications — workforce operations, reporting, cloud integrations, and secure modular architectures across web and mobile ecosystems.',
-  },
-  {
-    year: 'Feb 2024 — Jun 2025',
-    title: 'Route Mobile · Serverless & Microservices',
-    description:
-      'Migrated production workloads from EC2 to AWS Lambda, implemented RBAC, and optimized APIs with CloudWatch-driven observability — reducing cost and latency.',
-  },
-  {
-    year: 'Apr 2021 — Jan 2024',
-    title: 'Synergy Technology · API-Centric Backends',
-    description:
-      'Led full stack delivery on microservices, database optimization, and high-availability systems for client-facing enterprise products.',
-  },
-  {
-    year: 'Engineering Focus',
-    title: 'Production-Grade Mindset',
-    description:
-      'Scalability-first design, clean modular architecture, CI/CD automation, and AI-assisted engineering workflows with Cursor and Claude.',
-  },
-] as const
+export const AI_ENGINEERING = {
+  title: 'AI-Assisted Engineering',
+  subtitle:
+    'Human-in-the-loop workflow on the enterprise workforce & operations platform — accelerating delivery without compromising review, security, or production standards.',
+  tools: ['Cursor', 'Claude'] as const,
+  practices: [
+    {
+      area: 'Development',
+      description:
+        'Module scaffolding, API handlers, Angular/Ionic/React components, refactors, and boilerplate across the full stack.',
+    },
+    {
+      area: 'Code review',
+      description:
+        'Pre-PR passes for edge cases, auth patterns, and consistency with team conventions — final approval always human.',
+    },
+    {
+      area: 'Testing',
+      description:
+        'Cypress and unit test drafts, coverage ideas, and integration scenarios for Firebase, SQL, and GraphQL flows.',
+    },
+    {
+      area: 'Documentation',
+      description:
+        'API notes, handoff docs, and internal runbooks — verified before sharing with cross-functional teams.',
+    },
+    {
+      area: 'Debugging',
+      description:
+        'Faster root-cause analysis on sync issues, cloud integrations, and cross-platform defects.',
+    },
+  ],
+  outcomes: [
+    'Faster iteration on enterprise modules across web and mobile',
+    'Shorter PR cycles with fewer post-review revision rounds',
+    'More consistent patterns across APIs, auth flows, and shared services',
+    'Quicker debugging on data sync and cloud integration issues',
+    'Better test and documentation coverage with less manual overhead',
+  ],
+  guardrails:
+    'No confidential client data in prompts · all AI output reviewed, tested, and owned by the engineer before merge.',
+} as const
 
 export const SKILL_CATEGORIES = {
   Backend: ['Node.js', 'Express.js', 'NestJS', 'TypeScript', 'REST APIs', 'GraphQL'],
@@ -141,6 +157,7 @@ export const PROJECTS = [
       'Mobile + web ecosystem with shared backend services',
       'Multi-environment deployments & CI/CD automation',
       'Cloud integrations across AWS and GCP/Firebase',
+      'AI-assisted delivery with Cursor & Claude — development, review, tests, docs, debugging',
     ],
     architecture: [
       'Modular frontend (Angular / Ionic / React) → Node.js API layer',
@@ -287,10 +304,13 @@ export const EXPERIENCE = [
       'Enterprise data synchronization, reporting systems, and analytics',
       'Authentication & authorization flows for secure enterprise access',
       'Performance optimization · multi-environment deployments · CI/CD',
-      'AI-assisted engineering workflows using Cursor and Claude',
+      'Cursor + Claude across development, pre-PR review, testing, documentation, and debugging',
+      'Human-in-the-loop: AI accelerates delivery; engineer owns review, tests, and production sign-off',
     ],
     achievements: [
       'Delivering production modules across enterprise workforce & operations domains',
+      'Faster module iteration and PR turnaround on the enterprise platform',
+      'Fewer post-review fix cycles through AI-assisted pre-PR quality passes',
       'Improving deployment reliability through GitHub Actions automation',
       'Supporting unified mobile + web ecosystems on shared backend services',
     ],
@@ -313,6 +333,8 @@ export const EXPERIENCE = [
       'Cypress',
       'REST',
       'GraphQL',
+      'Cursor',
+      'Claude',
     ],
   },
   {
@@ -399,6 +421,11 @@ export const ENGINEERING_PRINCIPLES = [
     title: 'Production-Grade Mindset',
     description:
       'Security, monitoring, performance, and maintainability are part of the first design — not post-launch additions.',
+  },
+  {
+    title: 'AI-Assisted, Engineer-Owned',
+    description:
+      'Cursor and Claude speed up scaffolding, review, and debugging — production quality stays with the engineer through tests, PR review, and secure prompt discipline.',
   },
 ] as const
 
