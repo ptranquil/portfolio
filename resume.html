@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prashant Dwivedi — Resume</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --text: #1a1a1f;
+        --muted: #4a4a55;
+        --accent: #2d3a8c;
+        --rule: #d8d8e0;
+      }
+
+      body {
+        font-family: 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif;
+        font-size: 9.5pt;
+        line-height: 1.28;
+        color: var(--text);
+        background: #f4f4f6;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        max-width: 8.5in;
+        margin: 0 auto;
+        background: #fff;
+        padding: 0.42in 0.48in;
+      }
+
+      header {
+        text-align: center;
+        padding-bottom: 0.14in;
+        border-bottom: 1.5px solid var(--accent);
+        margin-bottom: 0.14in;
+      }
+
+      h1 {
+        font-size: 17pt;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--accent);
+        line-height: 1.1;
+      }
+
+      .role-line {
+        font-size: 10pt;
+        font-weight: 600;
+        color: var(--text);
+        margin-top: 0.06in;
+      }
+
+      .contact {
+        margin-top: 0.08in;
+        font-size: 9pt;
+        color: var(--muted);
+      }
+
+      .contact a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .contact span {
+        margin: 0 0.12em;
+      }
+
+      h2 {
+        font-size: 9.5pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 0.04in;
+        margin: 0.12in 0 0.07in;
+      }
+
+      .summary {
+        color: var(--text);
+        text-align: justify;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.04in 0.2in;
+        font-size: 9pt;
+      }
+
+      .skills-grid p {
+        margin: 0;
+      }
+
+      .skills-grid strong {
+        color: var(--text);
+      }
+
+      .job {
+        margin-bottom: 0.1in;
+      }
+
+      .job:last-child {
+        margin-bottom: 0;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.2in;
+        flex-wrap: wrap;
+      }
+
+      .job-title {
+        font-weight: 700;
+        font-size: 10pt;
+      }
+
+      .job-company {
+        font-weight: 600;
+      }
+
+      .job-meta {
+        font-size: 9pt;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .job-context {
+        font-size: 9pt;
+        color: var(--muted);
+        font-style: italic;
+        margin: 0.03in 0 0.04in;
+      }
+
+      .job-tech {
+        font-size: 8.5pt;
+        color: var(--muted);
+        margin-bottom: 0.04in;
+      }
+
+      ul {
+        padding-left: 0.16in;
+        margin: 0;
+      }
+
+      li {
+        margin-bottom: 0.03in;
+      }
+
+      li::marker {
+        color: var(--accent);
+      }
+
+      .projects-compact {
+        font-size: 9pt;
+      }
+
+      .project-item {
+        margin-bottom: 0.05in;
+      }
+
+      .project-item strong {
+        font-weight: 700;
+      }
+
+      .education p {
+        margin: 0.02in 0;
+      }
+
+      .education .meta {
+        color: var(--muted);
+        font-size: 9pt;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .page {
+          padding: 0.38in 0.44in;
+          max-width: none;
+          margin: 0;
+        }
+
+        @page {
+          size: letter;
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>Prashant Dwivedi</h1>
+        <p class="role-line">
+          Software Engineer &nbsp;|&nbsp; Backend Engineer &nbsp;|&nbsp; Full Stack Developer
+        </p>
+        <p class="contact">
+          <a href="mailto:prashant.dwivedi.45678@gmail.com">prashant.dwivedi.45678@gmail.com</a>
+          <span>·</span>
+          <a href="https://linkedin.com/in/prashantpdwivedi">linkedin.com/in/prashantpdwivedi</a>
+          <span>·</span>
+          <a href="https://github.com/ptranquil">github.com/ptranquil</a>
+        </p>
+      </header>
+
+      <section aria-label="Professional Summary">
+        <h2>Professional Summary</h2>
+        <p class="summary">
+          Software Engineer with 4+ years of experience in backend and full stack development,
+          specializing in Node.js, cloud-native systems, REST APIs, distributed architectures, and
+          enterprise-grade applications. Proven in designing scalable APIs, optimizing cloud
+          infrastructure, improving application performance, and delivering production-ready
+          solutions across AWS, GCP/Firebase, web, and mobile ecosystems.
+        </p>
+      </section>
+
+      <section aria-label="Technical Skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <p><strong>Languages:</strong> JavaScript, TypeScript</p>
+          <p><strong>Backend:</strong> Node.js, Express.js, REST APIs, Firebase Cloud Functions</p>
+          <p><strong>Frontend:</strong> Angular, Ionic, Capacitor, React.js</p>
+          <p><strong>Cloud & DevOps:</strong> AWS, GCP/Firebase, Docker, GitHub Actions, CI/CD</p>
+          <p>
+            <strong>Databases:</strong> PostgreSQL, MySQL, MongoDB, Firestore, DynamoDB, Redis,
+            BigQuery
+          </p>
+          <p>
+            <strong>Architecture:</strong> Microservices, Distributed Systems, Event-Driven Design,
+            RabbitMQ, Scalable API Design
+          </p>
+          <p><strong>Testing & Tools:</strong> Cypress, Git, Firebase CLI, AWS CloudWatch</p>
+        </div>
+      </section>
+
+      <section aria-label="Professional Experience">
+        <h2>Professional Experience</h2>
+
+        <article class="job">
+          <div class="job-header">
+            <div>
+              <span class="job-company">Rigved Infotech</span>
+              <span class="job-title"> — Software Engineer</span>
+            </div>
+            <span class="job-meta">Jul 2025 – Present</span>
+          </div>
+          <p class="job-context">
+            iSITE (BoG Global) — Enterprise HSE / Safety Mobile Platform
+          </p>
+          <p class="job-tech">
+            Angular, Ionic, Capacitor, TypeScript, Firebase, Firestore, GCP API Gateway, Node.js,
+            Express.js, BigQuery, Redis, Cypress, GitHub Actions
+          </p>
+          <ul>
+            <li>
+              Built and maintained scalable backend services on Firebase Cloud Functions
+              (Node.js/Express), delivering 50+ REST APIs for users, observations, actions, badges,
+              leaderboards, and notifications.
+            </li>
+            <li>
+              Migrated mobile backend traffic to GCP API Gateway with Firebase Authentication,
+              service-account verification, and feature-flag-based routing.
+            </li>
+            <li>
+              Developed cross-platform mobile apps (Ionic, Angular, Capacitor) with geolocation
+              check-in, QR scanning, push notifications, offline sync, and multilingual support
+              (EN/FR).
+            </li>
+            <li>
+              Integrated enterprise iCare REST APIs for bi-directional sync of observations and
+              actions via Firestore triggers, scheduled jobs, and batch processing.
+            </li>
+            <li>
+              Managed Dev, QA, and Production environments; Firestore deployments, data migrations,
+              operational tooling, and BigQuery reporting integrations.
+            </li>
+            <li>
+              Implemented Cypress E2E automation and GitHub Actions CI/CD to improve release
+              reliability and deployment quality.
+            </li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <div>
+              <span class="job-company">Route Mobile Limited</span>
+              <span class="job-title"> — Software Developer</span>
+            </div>
+            <span class="job-meta">Feb 2024 – Jun 2025</span>
+          </div>
+          <p class="job-tech">
+            Node.js, AWS Lambda, API Gateway, DynamoDB, CloudWatch, Docker, ECR, REST APIs
+          </p>
+          <ul>
+            <li>
+              Enhanced microservices and AWS infrastructure (Lambda, API Gateway, S3, DynamoDB) to
+              improve scalability and operational clarity.
+            </li>
+            <li>
+              Optimized REST APIs and database queries, reducing response latency and improving
+              backend performance.
+            </li>
+            <li>
+              Implemented RBAC for parent-child account management and secure authorization
+              workflows.
+            </li>
+            <li>
+              Migrated Node.js applications from EC2 to AWS Serverless (Lambda, API Gateway, ECR,
+              DynamoDB), reducing infrastructure costs and improving deployment velocity.
+            </li>
+            <li>
+              Resolved production bottlenecks and strengthened observability with AWS CloudWatch
+              logging and monitoring.
+            </li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <div>
+              <span class="job-company">Synergy Technology Services Pvt Ltd</span>
+              <span class="job-title"> — Software Engineer</span>
+            </div>
+            <span class="job-meta">Apr 2021 – Jan 2024</span>
+          </div>
+          <p class="job-tech">
+            Node.js, Express.js, React.js, MongoDB, MySQL, PostgreSQL, Docker, RabbitMQ, Redis
+          </p>
+          <ul>
+            <li>
+              Designed scalable API-centric backends using modular architecture and microservices
+              patterns for high-availability client systems.
+            </li>
+            <li>
+              Optimized API response times and database performance through indexing, query tuning,
+              and backend refactoring.
+            </li>
+            <li>
+              Led backend delivery on multiple client projects; collaborated with frontend teams on
+              API design and integration.
+            </li>
+            <li>
+              Drove code reviews, testing, and performance initiatives to maintain production
+              stability and engineering standards.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section aria-label="Selected Projects">
+        <h2>Selected Projects</h2>
+        <div class="projects-compact">
+          <p class="project-item">
+            <strong>Enterprise HSE & Safety Platform (iSITE)</strong> — 50+ REST APIs, cross-platform
+            mobile, Firestore triggers, BigQuery reporting, offline sync, CI/CD (Angular, Ionic,
+            Firebase, GCP API Gateway, Node.js).
+          </p>
+          <p class="project-item">
+            <strong>AWS Serverless Migration</strong> — EC2 to Lambda/API Gateway; Docker/ECR;
+            CloudWatch; reduced cost and improved scalability (Node.js, AWS).
+          </p>
+          <p class="project-item">
+            <strong>ONDC Logistics Platform</strong> — Beckn protocol integrations, queue-based order
+            lifecycle automation (Node.js, RabbitMQ, Redis, MySQL, React).
+          </p>
+          <p class="project-item">
+            <strong>Real-Time Tracking Dashboard</strong> — Fleet conversion tracking and billing
+            automation (React, Node.js, TypeScript, MongoDB, Redis).
+          </p>
+        </div>
+      </section>
+
+      <section class="education" aria-label="Education">
+        <h2>Education</h2>
+        <p><strong>Bhavans College, Mumbai</strong> — B.Sc. Information Technology</p>
+        <p class="meta">CGPI: 9.05 &nbsp;|&nbsp; Jun 2017 – May 2020</p>
+      </section>
+    </main>
+  </body>
+</html>
