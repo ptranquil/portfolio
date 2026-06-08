@@ -9,6 +9,7 @@ interface ButtonProps {
   onClick?: () => void
   className?: string
   icon?: ReactNode
+  openInNewTab?: boolean
 }
 
 export function Button({
@@ -18,6 +19,7 @@ export function Button({
   onClick,
   className,
   icon,
+  openInNewTab = false,
 }: ButtonProps) {
   const base =
     'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-colors relative overflow-hidden'
@@ -41,8 +43,8 @@ export function Button({
     return (
       <motion.a
         href={href}
-        target={href.startsWith('http') ? '_blank' : undefined}
-        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+        target={openInNewTab || href.startsWith('http') ? '_blank' : undefined}
+        rel={openInNewTab || href.startsWith('http') ? 'noopener noreferrer' : undefined}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className={classes}

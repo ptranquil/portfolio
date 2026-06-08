@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowDown, Download, Mail, FolderOpen } from 'lucide-react'
+import { ArrowDown, ExternalLink, Mail, FolderOpen } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import {
   HERO_INTRO,
@@ -146,9 +146,10 @@ export function Hero() {
           <Button
             variant="secondary"
             href={SITE.resumeUrl}
-            icon={<Download size={16} />}
+            openInNewTab
+            icon={<ExternalLink size={16} />}
           >
-            Download Resume
+            View Resume
           </Button>
           <Button
             variant="ghost"

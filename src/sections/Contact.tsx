@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Download, Mail, FileText } from 'lucide-react'
+import { ExternalLink, Mail, FileText } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon } from '@/components/icons/SocialIcons'
 import { SITE } from '@/constants/data'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -48,10 +48,10 @@ export function Contact() {
           <FileText className="w-8 h-8 text-accent-glow mx-auto mb-4" />
           <p className="text-muted leading-relaxed max-w-lg mx-auto mb-8">
             Interested in enterprise platforms, cloud-native backends, or distributed systems
-            architecture? Connect via the channels below or download my resume.
+            architecture? Connect via the channels below or view my resume.
           </p>
-          <Button variant="primary" href={SITE.resumeUrl} icon={<Download size={16} />}>
-            Download Resume
+          <Button variant="primary" href={SITE.resumeUrl} openInNewTab icon={<ExternalLink size={16} />}>
+            View Resume
           </Button>
         </motion.div>
 
