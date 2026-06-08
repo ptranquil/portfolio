@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
+import { useIsMobile } from '@/hooks/useIsMobile'
 import { cn } from '@/utils/cn'
 
 interface ButtonProps {
@@ -21,6 +22,7 @@ export function Button({
   icon,
   openInNewTab = false,
 }: ButtonProps) {
+  const isMobile = useIsMobile()
   const base =
     'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-colors relative overflow-hidden'
 
@@ -40,6 +42,18 @@ export function Button({
   const classes = cn(base, variants[variant], className)
 
   if (href) {
+    if (isMobile) {
+      return (
+        <a
+          href={href}
+          target={openInNewTab || href.startsWith('http') ? '_blank' : undefined}
+          rel={openInNewTab || href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          className={classes}
+        >
+          {content}
+        </a>
+      )
+    }
     return (
       <motion.a
         href={href}
@@ -51,6 +65,14 @@ export function Button({
       >
         {content}
       </motion.a>
+    )
+  }
+
+  if (isMobile) {
+    return (
+      <button type="button" onClick={onClick} className={classes}>
+        {content}
+      </button>
     )
   }
 

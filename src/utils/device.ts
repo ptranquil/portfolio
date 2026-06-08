@@ -1,9 +1,7 @@
+import { getIsMobile } from '@/hooks/useIsMobile'
+
 export function isTouchDevice(): boolean {
-  if (typeof window === 'undefined') return false
-  return (
-    window.matchMedia('(pointer: coarse)').matches ||
-    window.matchMedia('(max-width: 767px)').matches
-  )
+  return getIsMobile()
 }
 
 export function prefersReducedMotion(): boolean {

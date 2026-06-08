@@ -1,4 +1,5 @@
 import type Lenis from 'lenis'
+import { getIsMobile } from '@/hooks/useIsMobile'
 
 let lenisInstance: Lenis | null = null
 
@@ -18,5 +19,5 @@ export function scrollToSection(id: string) {
   }
 
   const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET
-  window.scrollTo({ top, behavior: 'smooth' })
+  window.scrollTo({ top, behavior: getIsMobile() ? 'auto' : 'smooth' })
 }

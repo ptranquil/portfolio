@@ -1,3 +1,4 @@
+import { MotionConfig } from 'framer-motion'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { CursorGlow } from '@/components/effects/CursorGlow'
@@ -14,15 +15,16 @@ import { useSmoothScroll } from '@/hooks/useSmoothScroll'
 import { useIntroReady } from '@/hooks/useIntroReady'
 
 export default function App() {
-  const { ready, skipLoader, onIntroComplete } = useIntroReady()
+  const { isMobile, ready, skipLoader, onIntroComplete } = useIntroReady()
   useSmoothScroll()
 
   return (
-    <>
+    <MotionConfig reducedMotion={isMobile ? 'always' : 'user'}>
       {!skipLoader && !ready && <LoadingScreen onComplete={onIntroComplete} />}
 
-      <ScrollProgress />
-      <CursorGlow />
+      {!isMobile && <ScrollProgress />}
+      {!isMobile && <CursorGlow />}
+
       <Navbar ready={ready} />
       <main>
         <Hero ready={ready} />
@@ -34,6 +36,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </MotionConfig>
   )
 }
