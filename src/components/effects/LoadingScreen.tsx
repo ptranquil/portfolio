@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { shouldSkipLoadingScreen } from '@/utils/device'
 
 interface LoadingScreenProps {
   onComplete: () => void
@@ -8,28 +9,36 @@ interface LoadingScreenProps {
 export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
   const [done, setDone] = useState(false)
+  const fastMode = shouldSkipLoadingScreen()
 
   useEffect(() => {
+    if (fastMode) {
+      onComplete()
+      return
+    }
+
     const interval = setInterval(() => {
       setProgress((p) => {
         if (p >= 100) {
           clearInterval(interval)
-          setTimeout(() => setDone(true), 400)
-          setTimeout(onComplete, 900)
+          setTimeout(() => setDone(true), 300)
+          setTimeout(onComplete, 600)
           return 100
         }
         return p + Math.random() * 15 + 5
       })
     }, 80)
     return () => clearInterval(interval)
-  }, [onComplete])
+  }, [onComplete, fastMode])
+
+  if (fastMode) return null
 
   return (
     <AnimatePresence>
       {!done && (
         <motion.div
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-void"
         >
           <motion.div
