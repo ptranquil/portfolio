@@ -12,23 +12,30 @@ import { Button } from '@/components/ui/Button'
 import { ParticleGrid } from '@/components/effects/ParticleGrid'
 import { scrollToSection } from '@/utils/scroll'
 
-function RotatingTitle() {
+const easeOut = [0.22, 1, 0.36, 1] as const
+
+interface HeroProps {
+  ready?: boolean
+}
+
+function RotatingTitle({ ready }: { ready: boolean }) {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
+    if (!ready) return
     const timer = setInterval(() => {
       setIndex((i) => (i + 1) % ROTATING_TITLES.length)
     }, 3000)
     return () => clearInterval(timer)
-  }, [])
+  }, [ready])
 
   return (
     <div className="h-8 md:h-10 overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.span
-          key={ROTATING_TITLES[index]}
+          key={ready ? ROTATING_TITLES[index] : 'idle'}
           initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          animate={ready ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
           exit={{ y: -30, opacity: 0 }}
           transition={{ duration: 0.5 }}
           className="block font-mono text-sm md:text-base text-cyan tracking-wide"
@@ -40,7 +47,7 @@ function RotatingTitle() {
   )
 }
 
-function FloatingIcons() {
+function FloatingIcons({ ready }: { ready: boolean }) {
   const positions = [
     { x: '8%', y: '20%', delay: 0 },
     { x: '85%', y: '25%', delay: 0.5 },
@@ -59,11 +66,15 @@ function FloatingIcons() {
           className="absolute hidden lg:flex glass px-3 py-1.5 rounded-full font-mono text-[10px] text-muted"
           style={{ left: positions[i]?.x, top: positions[i]?.y }}
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{
-            opacity: [0.4, 0.9, 0.4],
-            y: [0, -12, 0],
-            scale: 1,
-          }}
+          animate={
+            ready
+              ? {
+                  opacity: [0.4, 0.9, 0.4],
+                  y: [0, -12, 0],
+                  scale: 1,
+                }
+              : { opacity: 0, scale: 0.8, y: 0 }
+          }
           transition={{
             opacity: { duration: 4, repeat: Infinity, delay: positions[i]?.delay },
             y: { duration: 5, repeat: Infinity, delay: positions[i]?.delay },
@@ -77,7 +88,7 @@ function FloatingIcons() {
   )
 }
 
-export function Hero() {
+export function Hero({ ready = true }: HeroProps) {
   const name = SITE.name.split(' ')
 
   return (
@@ -86,7 +97,7 @@ export function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center section-padding overflow-hidden"
     >
       <ParticleGrid />
-      <FloatingIcons />
+      <FloatingIcons ready={ready} />
 
       <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full opacity-30 blur-[120px] pointer-events-none"
@@ -99,32 +110,41 @@ export function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="font-mono text-xs uppercase tracking-[0.4em] text-muted mb-6"
         >
           {HERO_TAGLINE}
         </motion.p>
 
         <div className="overflow-hidden mb-4">
-          <motion.h1
-            initial={{ y: 100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tighter leading-[0.95]"
-          >
-            <span className="block text-gradient">{name[0]}</span>
-            <span className="block text-gradient-accent">{name[1]}</span>
-          </motion.h1>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tighter leading-[0.95]">
+            <motion.span
+              className="block text-gradient"
+              initial={{ y: 120, opacity: 0 }}
+              animate={ready ? { y: 0, opacity: 1 } : { y: 120, opacity: 0 }}
+              transition={{ duration: 0.9, delay: 0.35, ease: easeOut }}
+            >
+              {name[0]}
+            </motion.span>
+            <motion.span
+              className="block text-gradient-accent"
+              initial={{ y: 120, opacity: 0 }}
+              animate={ready ? { y: 0, opacity: 1 } : { y: 120, opacity: 0 }}
+              transition={{ duration: 0.9, delay: 0.5, ease: easeOut }}
+            >
+              {name[1]}
+            </motion.span>
+          </h1>
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{ duration: 0.6, delay: 0.75 }}
           className="flex flex-col items-center gap-2 mb-10"
         >
-          <RotatingTitle />
+          <RotatingTitle ready={ready} />
           <p className="text-muted max-w-2xl text-sm md:text-base leading-relaxed">
             {HERO_INTRO}
           </p>
@@ -132,8 +152,8 @@ export function Hero() {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.1 }}
+          animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.95 }}
           className="flex flex-wrap items-center justify-center gap-4"
         >
           <Button
@@ -164,8 +184,8 @@ export function Hero() {
       <motion.button
         type="button"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        animate={ready ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ delay: 1.3, duration: 0.5 }}
         onClick={() => scrollToSection('about')}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted hover:text-white transition-colors"
         aria-label="Scroll to about"

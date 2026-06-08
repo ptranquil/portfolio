@@ -12,10 +12,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const fastMode = shouldSkipLoadingScreen()
 
   useEffect(() => {
-    if (fastMode) {
-      onComplete()
-      return
-    }
+    if (fastMode) return
 
     const interval = setInterval(() => {
       setProgress((p) => {

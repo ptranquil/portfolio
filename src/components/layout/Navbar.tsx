@@ -3,13 +3,15 @@ import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { NAV_LINKS, SITE } from '@/constants/data'
 import { scrollToSection } from '@/utils/scroll'
-import { isTouchDevice } from '@/utils/device'
 import { cn } from '@/utils/cn'
 
-export function Navbar() {
+interface NavbarProps {
+  ready?: boolean
+}
+
+export function Navbar({ ready = true }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const isMobile = isTouchDevice()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
@@ -35,9 +37,9 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        initial={isMobile ? { y: 0 } : { y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: isMobile ? 0.3 : 0.8, delay: isMobile ? 0 : 0.5 }}
+        initial={{ y: -80, opacity: 0 }}
+        animate={ready ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
+        transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           'fixed top-0 left-0 right-0 px-6 md:px-12 py-4 transition-all duration-300',
           mobileOpen ? 'z-[60]' : 'z-40',

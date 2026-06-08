@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { CursorGlow } from '@/components/effects/CursorGlow'
@@ -13,35 +11,29 @@ import { Experience } from '@/sections/Experience'
 import { SystemDesign } from '@/sections/SystemDesign'
 import { Contact } from '@/sections/Contact'
 import { useSmoothScroll } from '@/hooks/useSmoothScroll'
-import { shouldSkipLoadingScreen } from '@/utils/device'
+import { useIntroReady } from '@/hooks/useIntroReady'
 
 export default function App() {
-  const [loaded, setLoaded] = useState(shouldSkipLoadingScreen())
+  const { ready, skipLoader, onIntroComplete } = useIntroReady()
   useSmoothScroll()
 
   return (
     <>
-      {!loaded && <LoadingScreen onComplete={() => setLoaded(true)} />}
+      {!skipLoader && !ready && <LoadingScreen onComplete={onIntroComplete} />}
 
-      <motion.div
-        initial={loaded ? false : { opacity: 0 }}
-        animate={{ opacity: loaded ? 1 : 0 }}
-        transition={{ duration: loaded ? 0 : 0.5 }}
-      >
-        <ScrollProgress />
-        <CursorGlow />
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <SystemDesign />
-          <Contact />
-        </main>
-        <Footer />
-      </motion.div>
+      <ScrollProgress />
+      <CursorGlow />
+      <Navbar ready={ready} />
+      <main>
+        <Hero ready={ready} />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <SystemDesign />
+        <Contact />
+      </main>
+      <Footer />
     </>
   )
 }
