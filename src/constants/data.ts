@@ -4,7 +4,7 @@ export const SITE = {
   email: 'prashant.dwivedi.45678@gmail.com',
   github: 'https://github.com/ptranquil',
   linkedin: 'https://linkedin.com/in/prashantpdwivedi',
-  resumeUrl: '/portfolio/resume.html',
+  resumeUrl: '/portfolio/resume.pdf',
   collaborationMessage:
     'Open to senior engineering roles, enterprise platform work, and collaborations on scalable cloud-native systems.',
 } as const

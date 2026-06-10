@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "resume:pdf": "node scripts/generate-resume-pdf.mjs"
+    "resume:pdf": "node scripts/generate-resume-pdf.mjs",
+    "prep:tracker": "node interview-prep/scripts/generate-tracker.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -30,6 +31,7 @@
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "exceljs": "^4.4.0",
     "gh-pages": "^6.3.0",
     "globals": "^17.6.0",
     "puppeteer": "^24.43.1",
